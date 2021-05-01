@@ -16,9 +16,13 @@ form {
   position: fixed;
   bottom: 0;
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   padding-bottom: 20px;
+  background-color: blue;
+  align-items: center;
+  height: 100px;
+  justify-content: space-around;
 }
 .input {
   flex: 10;
@@ -43,9 +47,15 @@ form {
   justify-content: center;
 }
 .send {
-  width: 100%;
+  width: 80%;
   height: 50px;
-  background-color: blue;
+  background-color: white;
   border: 0;
   color: white;
+}
+
+.text{
+  height: 900px;
+  overflow-y: scroll;
+  background-color: red;
 }

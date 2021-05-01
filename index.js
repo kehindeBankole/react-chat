@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
+const { Socket } = require("dgram");
 
 const app = express();
 
@@ -20,10 +21,16 @@ io.on("connection", (socket) => {
   //all clients including user
   io.emit();
 
+  //listen for chat message
+
+  socket.on("chatMessage", (msg) => {
+    console.log(msg);
+    io.emit("message", msg);
+  });
 
   socket.on("disconnect", () => {
     console.log("logged out");
-   io.emit("message", "a user has left the chat");
+    io.emit("message", "a user has left the chat");
   });
 });
 app.use(cors());
