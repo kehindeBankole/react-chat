@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 code {
@@ -51,11 +51,13 @@ form {
   height: 50px;
   background-color: white;
   border: 0;
-  color: white;
+  color: black;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .text{
-  height: 900px;
+  height: 100vh;
   overflow-y: scroll;
   background-color: red;
 }

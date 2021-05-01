@@ -6,16 +6,15 @@ function App() {
   const [id, setid] = useState("");
   const [msg, setmsg] = useState([]);
   const socketRef = useRef();
+  const textRef = useRef();
   // const socket = io("/");
 
   useEffect(() => {
     socketRef.current = io("/");
     //const socket = io("/");
-    socketRef.current.on("id", (id) => {
-      setid(id);
-    });
     socketRef.current.on("message", (message) => {
       setmsg((oldmsg) => [...oldmsg, message]);
+    document.getElementsByClassName('text')[0].scrollTop=document.getElementsByClassName('text')[0].scrollHeight
     });
   }, []);
   function sendmessage(e) {
@@ -23,7 +22,7 @@ function App() {
 
     //emit message to server
     socketRef.current.emit("chatMessage", message);
-    console.log(msg);
+
   }
   return (
     <>
