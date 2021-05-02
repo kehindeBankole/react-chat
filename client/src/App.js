@@ -5,6 +5,7 @@ function App() {
   const [message, setmessage] = useState("");
   const [id, setid] = useState("");
   const [msg, setmsg] = useState([]);
+  const [msgwelcome, setmsgwelcome] = useState([]);
   const socketRef = useRef();
   const textRef = useRef();
   // const socket = io("/");
@@ -21,6 +22,13 @@ function App() {
         "text"
       )[0].scrollTop = document.getElementsByClassName("text")[0].scrollHeight;
     });
+
+    socketRef.current.on("messagewelcome", (message) => {
+      setmsgwelcome((oldmsg) => [...oldmsg, message]);
+      // document.getElementsByClassName(
+      //   "text"
+      // )[0].scrollTop = document.getElementsByClassName("text")[0].scrollHeight;
+    });
   }, []);
   function sendmessage(e) {
     e.preventDefault();
@@ -32,36 +40,35 @@ function App() {
   return (
     <>
       <div className="text">
-        {/* <p>{msg}</p> */}
+        {msgwelcome.map((d) => (
+          <div>{d.text}</div>
+        ))}
         <div className="bg">
           <div className="first">
-          {msg.map((d, i) =>{
-            if(d.id===id){
-              return(
-                <div className="" style={{ padding: "10px" }} key={i}>
-            {d.text}
-          </div>
-              )
-            }
-          })}
+            {msg.map((d, i) => {
+              if (d.id === id) {
+                return (
+                  <div className="" style={{ padding: "10px" , backgroundColor:"blue"}} key={i}>
+                    {d.text}
+                
+                  </div>
+                );
+              }
+            })}
           </div>
           <div className="second">
-          {msg.map((d, i) =>{
-            if(d.id!==id){
-              return(
-                <div className="" style={{ padding: "10px" }} key={i}>
-            {d.text}
-          </div>
-              )
-            }
-          })}
+            {msg.map((d, i) => {
+              if (d.id !== id) {
+                return (
+                  <div className="secondcontent" style={{ padding: "10px" , backgroundColor:"black" }} key={i}>
+                    {d.text}
+                
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
-        {/* {msg.map((d, i) => (
-          <div className="" style={{ padding: "10px" }} key={i}>
-            {d.text}
-          </div>
-        ))} */}
       </div>
       <form>
         <div className="input">

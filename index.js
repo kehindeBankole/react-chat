@@ -15,10 +15,10 @@ io.on("connection", (socket) => {
   console.log(socket.id);
   //single client
   socket.emit('id' , socket.id)
-  socket.emit("message", formatMessage('bot' , `welcome to chatFor ${socket.id}` , socket.id));
+  socket.emit("messagewelcome", formatMessage('bot' , `welcome to chatFor ${socket.id}`));
 
   //broadcast when user connects--all except user
-  socket.broadcast.emit("message", formatMessage('bot' , `a user has left the chat` , socket.id));
+  socket.broadcast.emit("messagewelcome", formatMessage('bot' , `a user has joined the chat`));
 
   //all clients including user
   io.emit();
@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("logged out");
-    io.emit("message", "a user has left the chat");
+    io.emit("messagewelcome", "a user has left the chat");
   });
 });
 app.use(cors());
