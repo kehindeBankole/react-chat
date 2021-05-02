@@ -61,3 +61,20 @@ form {
   overflow-y: scroll;
   background-color: red;
 }
+.bg{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.first{
+background-color: brown;
+height: 100%;
+/* width: 100%; */
+flex: 1;
+}
+.second{
+  background-color: yellow;
+  height: 100%;
+  /* width: 100%; */
+  flex: 1;
+  }

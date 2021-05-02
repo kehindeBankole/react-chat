@@ -9,14 +9,16 @@ const app = express();
 
 const server = http.createServer(app);
 const io = socketio(server);
+const formatMessage = require('./utils/messages')
 //run when client connects
 io.on("connection", (socket) => {
   console.log(socket.id);
   //single client
-  socket.emit("message", "welcome to chatFor");
+  socket.emit('id' , socket.id)
+  socket.emit("message", formatMessage('bot' , `welcome to chatFor ${socket.id}` , socket.id));
 
   //broadcast when user connects--all except user
-  socket.broadcast.emit("message", "a user has joined the chat");
+  socket.broadcast.emit("message", formatMessage('bot' , `a user has left the chat` , socket.id));
 
   //all clients including user
   io.emit();
@@ -25,7 +27,7 @@ io.on("connection", (socket) => {
 
   socket.on("chatMessage", (msg) => {
     console.log(msg);
-    io.emit("message", msg);
+    io.emit("message", formatMessage('USER' , `${msg}` , socket.id));
   });
 
   socket.on("disconnect", () => {
