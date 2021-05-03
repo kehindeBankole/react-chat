@@ -43,7 +43,7 @@ function App() {
         {msgwelcome.map((d) => (
           <div>{d.text}</div>
         ))}
-        <div className="bg">
+     <div className="bg">
           <div className="first">
             {msg.map((d, i) => {
               if (d.id === id) {
@@ -68,7 +68,8 @@ function App() {
               }
             })}
           </div>
-        </div>
+        </div> 
+       
       </div>
       <form>
         <div className="input">

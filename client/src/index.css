@@ -63,19 +63,19 @@ form {
   background-color: red;
 }
 .bg{
-  display: flex;
+  /* display: flex; */
   height: 100%;
   width: 100%;
 }
 .first{
 background-color: brown;
-height: 100%;
+/* height: 100%; */
 width: 100%;
 
 }
 .second{
   background-color: yellow;
-  height: 100%;
+  /* height: 100%; */
   float: right;
   width: 100%;
 
