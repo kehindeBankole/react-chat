@@ -40,10 +40,10 @@ function App() {
   return (
     <>
       <div className="text">
-        {msgwelcome.map((d) => (
+        {/* {msgwelcome.map((d) => (
           <div>{d.text}</div>
-        ))}
-     <div className="bg">
+        ))} */}
+        {/* <div className="bg">
           <div className="first">
             {msg.map((d, i) => {
               if (d.id === id) {
@@ -68,8 +68,33 @@ function App() {
               }
             })}
           </div>
-        </div> 
-       
+        </div>  */}
+
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            height: "500px",
+            overflowY: "scroll",
+          }}
+        >
+          {
+            msg.map((d)=>{
+              if(d.id===id){
+                return(
+                  <div style={{display:'flex' , justifyContent:'flex-end' , backgroundColor:'blue'}}>
+                    {d.text}
+                  </div>
+                )
+              }
+              return(
+                <div style={{justifyContent:'flex-start' , backgroundColor:'purple'}}>
+                  {d.text}
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
       <form>
         <div className="input">
